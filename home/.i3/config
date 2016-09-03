@@ -56,7 +56,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86AudioPlay exec "mocp -G"
 bindsym XF86AudioPrev exec "mocp -r"
 bindsym XF86AudioNext exec "mocp -f"
-bindsym XF86AudioStop exec "mocp -x"
+bindsym XF86AudioStop exec "mocp -s"
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
