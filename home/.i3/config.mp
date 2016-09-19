@@ -325,12 +325,12 @@ bar {
 bindsym $mod+m bar mode toggle
 
 # Theme colors
-# class                 border 		backgr. 	text    	indic. 		child_border
-client.focused          $grey50 	$grey50 	$black	 	$warmwhite
-client.focused_inactive $manjarobrown 	$manjarobrown	$grey50 	$manjarobrown
-client.unfocused        $manjarobrown 	$manjarobrown	$grey50 	$manjarobrown
-client.urgent           $orange 	$warmwhite 	$grey50		$black
-client.placeholder      $black 		$black 		$white	 	$black 		$black
+# class                 border 			backgr. 		text    		indic. 			child_border
+client.focused          $grey50 		$grey50 		$black	 		$warmwhite
+client.focused_inactive $manjarobrown 		$manjarobrown		$grey50 		$manjarobrown
+client.unfocused        $manjarobrown 		$manjarobrown		$grey50		 	$manjarobrown
+client.urgent           $orange 		$warmwhite 		$grey50			$black
+client.placeholder      $black 			$black 			$white	 		$black 			$black
 
 client.background       $manjarobrown
 
