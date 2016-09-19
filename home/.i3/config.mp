@@ -317,7 +317,7 @@ bar {
 		focused_workspace  	$warmwhite	$grey50		$black
 		active_workspace   	$grey50		$grey20		$warmwhite
 		inactive_workspace	$grey50		$grey20		$warmwhite
-		urgent_workspace   	$grey50		$black		$warmwhite
+		urgent_workspace   	$black		$orange		$black
 	}
 }
 
