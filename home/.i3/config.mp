@@ -310,7 +310,7 @@ bar {
 	colors {
 #	background $transparent
 		background 		$manjarobrown
-                statusline 		$warmwhite
+		statusline 		$warmwhite
 		separator  		$grey50
 
 #                                  	border  	backgr. 	text
