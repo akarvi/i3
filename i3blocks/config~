@@ -41,19 +41,6 @@ markup=none
 #interval=once
 #signal=10
 
-# Memory usage
-#
-# The type defaults to "mem" if the instance is not specified.
-#[memory]
-#label=MEM
-#separator=false
-#interval=30
-
-#[memory]
-#label=SWAP
-#instance=swap
-#separator=false
-#interval=30
 
 # Network interface monitoring
 #
@@ -63,20 +50,43 @@ markup=none
 [bandwidth]
 #instance=eth0
 interval=1
-separator=false
+#separator=false
 
-[iface]
-#instance=wlan0
-label=
+[ssid]
+#label=WIFI: 
+#label=
+#interval=60
 #color=#00FF00
-interval=1
 #separator=false
 
 [wifi]
-#instance=wlp3s0
-label=
-interval=1
+#instance=wlp13s0
+#label=
+#interval=10
 #separator=false
+
+[iface]
+instance=eno1
+label= 
+#color=#00FF00
+interval=once
+#separator=false
+
+# Memory usage
+#
+# The type defaults to "mem" if the instance is not specified.
+[memory]
+label=⚏
+instance=mem
+separator=false
+interval=10
+
+# swap usage
+[memory]
+label=⚍
+instance=swap
+#separator=false
+interval=10
 
 # Disk usage
 #
@@ -84,16 +94,45 @@ interval=1
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=⛁
-#instance=/mnt/data
+label=⛁   sys:
+instance=/dev/sda3
 interval=30
+separator=false
+
+[disk]
+label=wine:
+#label=⛁
+instance=/dev/sda5
+interval=30
+separator=false
+
+[disk]
+label=steam:
+#label=⛁
+instance=/dev/sda6
+interval=30
+separator=false
+
+[disk]
+#label=home:
+label= ⛁  home:
+instance=/dev/sdb1
+interval=30
+#separator=false
+
+#[disk]
+#label=bak:
+#label=⛁
+#instance=/dev/sdh1
+#interval=30
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=
+#label=⚙
+label=   
 interval=1
 min_width=50.00%
 align=center
@@ -117,7 +156,7 @@ align=center
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [temperature]
-label=
+label= 
 interval=10
 
 # Key indicators
@@ -127,20 +166,20 @@ interval=10
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
-[keyindicator]
-instance=NUM
-interval=once
-signal=11
+#[keyindicator]
+#instance=NUM
+#interval=once
+#signal=11
 
-[keyindicator]
-instance=CAPS
-interval=once
-signal=11
+#[keyindicator]
+#instance=CAPS
+#interval=once
+#signal=11
 
 #Date Time
 #
 #[time]
-#command=date '+%A %e. %B   %H:%M   '
+#command=date '+%a %e. %B   %H:%M   '
 #interval=5
 
 [Time]
@@ -166,4 +205,4 @@ interval=5
 #[openvpn]
 #interval=20
 
-
+# vim:filetype=i3

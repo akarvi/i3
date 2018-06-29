@@ -15,9 +15,9 @@ new_float normal
 hide_edge_borders none
 
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
+# bindsym $mod+u border none
+# bindsym $mod+y border pixel 1
+# bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -28,6 +28,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec terminal
+bindsym $mod+Shift+Return exec st
 
 # kill focused window
 bindsym $mod+q kill
@@ -53,42 +54,47 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 ################################################################################################
 
 # moc keybindings
-bindsym XF86AudioPlay exec "mocp -G"
-bindsym XF86AudioPrev exec "mocp -r"
-bindsym XF86AudioNext exec "mocp -f"
-bindsym XF86AudioStop exec "mocp -s"
+# bindsym XF86AudioPlay exec "mocp -G"
+# bindsym XF86AudioPrev exec "mocp -r"
+# bindsym XF86AudioNext exec "mocp -f"
+# bindsym XF86AudioStop exec "mocp -s"
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
+# bindsym $mod+F1 exec pcmanfm ~/Desktop; rename workspace to "Desktop"
+# bindsym $mod+Shift+F3 exec gksu pcmanfm
+# bindsym $mod+F4 exec terminal -e 'mc'; rename workspace to "files"
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec [ $(ps h -C chromium | wc -l) = 0 ] && /usr/bin/chromium; rename workspace to "1: browse"
-bindsym $mod+F3 exec [ $(ps h -C uzbl-core | wc -l) = 0 ] && /usr/bin/uzbl-tabbed; rename workspace to "1: browse"
-#bindsym $mod+F2 exec chromium; rename workspace to "chrom"
-#bindsym $mod+F3 exec uzbl-tabbed; rename workspace to "browse"
-bindsym $mod+F4 exec terminal -e 'mc'; rename workspace to "files"
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F4 exec gksu pcmanfm
-bindsym $mod+F5 workspace "8: mail"; exec [ $(ps h -C mutt | wc -l) = 0 ] && terminal -e 'mutt'
-bindsym $mod+F6 workspace "7: music"; exec [ $(ps h -C mocp | wc -l) = 0 ] && terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
+# Function Keys
+bindsym $mod+F1 workspace "1: chromium"; exec [ $(ps h -C chromium | wc -l) = 0 ] && /usr/bin/chromium
+bindsym $mod+F2 workspace "2: tvbrowser"; exec [ $(ps h -C tvbrowser | wc -l) = 0 ] && /usr/bin/tvbrowser
+bindsym $mod+F3 workspace "3: terminal"; exec terminal
+bindsym $mod+F4 workspace "4: pcmanfm"; exec /usr/bin/pcmanfm
+bindsym $mod+F5 workspace "5: writer"; exec /usr/bin/lowriter
+bindsym $mod+F6 workspace "6: calc"; exec /usr/bin/localc
+#bindsym $mod+F7 workspace "7: music"; exec [ $(ps h -C mocp | wc -l) = 0 ] && terminal -e 'mocp'
+bindsym $mod+F7 workspace "7: music"; exec [ $(ps h -C ncmpcpp | wc -l) = 0 ] && terminal -e 'ncmpcpp' && terminal -e 'pyradio'
+bindsym $mod+F8 workspace "8: mail"; exec [ $(ps h -C mutt | wc -l) = 0 ] && terminal -e 'mutt'
+#
+bindsym $mod+Shift+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+# bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -97,10 +103,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -111,7 +117,7 @@ bindsym $mod+Shift+Right move right
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+# bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+h split h;exec notify-send 'tile |'
@@ -123,7 +129,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -133,10 +139,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+# bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -202,38 +208,51 @@ bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
+for_window [title="GNOME ALSA-Mischpult"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
+for_window [title="cmatrix"] fullscreen enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Keepassx2"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [title="Linphone"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [title="Mahjongg"] floating enable sticky enable border normal resize 1280 800
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [class="Manjaro Welcome"] floating enable
+for_window [title="Mousepad"] floating enable border normal move up 100px resize set 640 480
+for_window [title="mpv"] floating enable move right 0px move down 0px
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="PySol"] floating enable sticky enable border normal resize 1280 800
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
+for_window [title="Solaar"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
+for_window [title="Taschenrechner"] floating enable sticky enable move right 540px move down 400px
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
+for_window [title="Viewnior"] floating enable move right 0px move down 0px
 for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [title="Weiß ist am Zug"] floating enable sticky enable border normal resize 1280 800
+for_window [title="Willkommen - PyChess"] floating enable sticky enable border normal resize 1280 800
+for_window [title="xboard: GNU Chess"] floating enable sticky enable border normal resize 815 917
 for_window [class="Xfburn"] floating enable
-for_window [class="Keepassx2"] floating enable
 for_window [class="XCalc"] floating enable sticky enable move right 540px move down 200px
-for_window [class="Gcalctool"] floating enable sticky enable move right 400px move down 200px
 for_window [class="XClock"] floating enable sticky enable move right 560px move down 270px
-for_window [title="Solaar"] floating enable border normal
-for_window [title="cmatrix"] fullscreen enable
 for_window [title="xarchiver"] floating enable
-for_window [title="mpv"] floating enable move right 0px move down 0px
+# for_window [title="^JCalculator$"] floating enable border normal
+# for_window [title="^JEuro$"] floating enable border normal
+for_window [title="VLC media player"] floating enable move right 0px move down 0px
+for_window [title="bashrun"] floating enable move right 0px move up 300px resize set 640 50
+for_window [title="Kerbal Space Program"] fullscreen enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -290,39 +309,51 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+# bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id xterm -e "cmatrix -s"
 
+#####################################################################################################
 # Autostart applications
+#####################################################################################################
+
 ## adjustment of i3bar battery reading (only run at the very first login):
-#exec --no-startup-id /usr/bin/adjust_i3statusconf
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+## exec --no-startup-id /usr/bin/adjust_i3statusconf
 # exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -corners 0-0- -locker blurlock
 # exec --no-startup-id xgamma -bgamma 0.8
+# exec --no-startup-id xautolock -time 20 -corners 0-0- -locker blurlock
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id clipit
 exec --no-startup-id xbindkeys
-exec --no-startup-id radiotray
+exec --no-startup-id xset r rate 250 25
+exec --no-startup-id startudiskie
+
+#####################################################################################################
+# End Autostart
+#####################################################################################################
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	#status_command i3status
+  #status_command i3status
 	status_command i3blocks
 
 # color variables
 set $white				#FFFFFF
-set $warmwhite				#FDF6E3
+set $warmwhite			#FDF6E3
 set $grey20				#353836
 set $grey50				#889088
 set $black				#000000
 set $orange				#CB4B16
-set $manjarobrown			#2B2C2B
+set $arcdarkblue		#346BAD
+set $arcdarkgray		#272B34
+#set $manjarobrown		#2B2C2B
+#set $manjarogreen		#16A085
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
@@ -331,20 +362,16 @@ set $manjarobrown			#2B2C2B
 	bindsym button4 workspace next
 	bindsym button5 workspace prev
 	font pango:Sans 8
-
-	colors {
-
-#	background $transparent
-		background 		$manjarobrown
-		statusline 		$warmwhite
-		separator  		$grey50
-
-#                                  	border  	backgr. 	text
-		focused_workspace  	$warmwhite	$grey50		$black
-		active_workspace   	$grey50		$grey20		$warmwhite
-		inactive_workspace	$grey50		$grey20		$warmwhite
-		urgent_workspace   	$black		$orange		$black
-	}
+  colors {
+    separator				#7d7d7d
+	# background 			#141414
+	background 				$arcdarkgray
+    statusline 				#00b0ef
+    focused_workspace 		#00b0ef 	#141414 	#00b0ef
+    active_workspace 		#141414 	#141414 	#00b0ef
+    inactive_workspace 		#141414 	#141414 	#7d7d7d
+    urgent_workspace 		#ff7066 	#141414 	#ff7066
+  }
 }
 
 # hide/unhide i3status bar
@@ -352,10 +379,6 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                 border 		backgr. 	text    	indic. 		child_border
-client.focused          $grey50 	$grey50 	$black	 	$warmwhite
-client.focused_inactive $manjarobrown 	$manjarobrown	$grey50 	$manjarobrown
-client.unfocused        $manjarobrown 	$manjarobrown	$grey50 	$manjarobrown
-client.urgent           $orange 	$warmwhite 	$grey50		$black
 client.placeholder      $black 		$black 		$white	 	$black 		$black
 
 client.background       $manjarobrown
@@ -420,5 +443,10 @@ mode "$mode_gaps_outer" {
 # i3blocks
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
+client.focused 				#00b0ef 	#00b0ef 	#141414 	#ff7066
+client.focused_inactive 	#141414 	#141414 	#00b0ef 	#472b2a
+client.unfocused 			#141414 	#141414 	#7d7d7d		#141414
+client.urgent 				#ff7066 	#ff7066 	#141414 	#ff7066
 
 # vim:filetype=i3
